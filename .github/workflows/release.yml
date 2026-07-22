@@ -24,8 +24,8 @@ jobs:
       - name: Restore signing config
         run: |
           echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 -d > android/upload-keystore.jks
-          cat > android/key.properties <<EOF
-          storeFile=$(pwd)/android/upload-keystore.jks
+          cat > android/key.properties <<'EOF'
+          storeFile=${{ github.workspace }}/android/upload-keystore.jks
           storePassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           keyAlias=${{ secrets.ANDROID_KEY_ALIAS }}
           keyPassword=${{ secrets.ANDROID_KEY_PASSWORD }}
