@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:floss_magnifier/features/magnifier/types.dart';
@@ -176,5 +178,26 @@ void main() {
     tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed);
     await tester.pumpAndSettle();
     expect(find.bySemanticsLabel('Back to live view'), findsOneWidget);
+  });
+
+  testWidgets('resume deletes the outgoing frozen still', (tester) async {
+    await tester.runAsync(() async {
+      final file = File(
+          '${Directory.systemTemp.path}/floss_magnifier_test_still_${DateTime.now().microsecondsSinceEpoch}.jpg');
+      await file.writeAsBytes([0]);
+      final camera = FakeMagnifierCamera(stillPath: file.path);
+      await pumpScreen(tester, camera);
+
+      await tester.tap(find.bySemanticsLabel('Freeze image'));
+      await tester.pump();
+      expect(find.bySemanticsLabel('Back to live view'), findsOneWidget);
+      expect(await file.exists(), isTrue);
+
+      await tester.tap(find.bySemanticsLabel('Back to live view'));
+      await tester.pump();
+      await Future<void>.delayed(const Duration(milliseconds: 50));
+
+      expect(await file.exists(), isFalse);
+    });
   });
 }

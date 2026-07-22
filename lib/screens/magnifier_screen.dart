@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -99,10 +100,17 @@ class _MagnifierScreenState extends State<MagnifierScreen>
     }
   }
 
+  void _deleteStill(String path) {
+    // Best-effort: the still lives in app cache; failure is harmless.
+    unawaited(File(path).delete().catchError((_) => File(path)));
+  }
+
   Future<void> _freeze() async {
     final l10n = AppLocalizations.of(context);
     try {
       final path = await _camera.takePicture();
+      final outgoing = _state!.mode.value;
+      if (outgoing is FrozenMode) _deleteStill(outgoing.imagePath);
       _state!.freeze(path);
       if (!mounted) return;
       SemanticsService.sendAnnouncement(
@@ -115,6 +123,8 @@ class _MagnifierScreenState extends State<MagnifierScreen>
   }
 
   void _resume() {
+    final outgoing = _state!.mode.value;
+    if (outgoing is FrozenMode) _deleteStill(outgoing.imagePath);
     _state!.resume();
     SemanticsService.sendAnnouncement(
         View.of(context), AppLocalizations.of(context).imageLiveAnnouncement, TextDirection.ltr);

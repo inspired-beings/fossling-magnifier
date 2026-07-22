@@ -8,6 +8,7 @@ class FakeMagnifierCamera implements MagnifierCamera {
     this.hasTorch = true,
     this.initError,
     this.takePictureError,
+    this.stillPath,
   });
 
   @override
@@ -19,6 +20,7 @@ class FakeMagnifierCamera implements MagnifierCamera {
 
   Object? initError;
   Object? takePictureError;
+  final String? stillPath;
   final List<String> log = [];
 
   @override
@@ -50,7 +52,7 @@ class FakeMagnifierCamera implements MagnifierCamera {
     log.add('takePicture');
     final error = takePictureError;
     if (error != null) throw error;
-    return '/fake/still.jpg';
+    return stillPath ?? '/fake/still.jpg';
   }
 
   @override
