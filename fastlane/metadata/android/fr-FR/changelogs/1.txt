@@ -1,0 +1,9 @@
+Première version.
+
+- Zoom caméra en direct avec grand curseur, gros boutons +/− et pincement
+- Lampe torche pour la lecture dans l'obscurité
+- Figez l'image, puis déplacez et zoomez dans l'image fixe
+- Touchez pour faire la mise au point
+- Grandes commandes très contrastées, prise en charge complète de TalkBack, retour haptique
+- Français et anglais
+- Aucun accès réseau, aucune publicité, aucune mesure d'audience

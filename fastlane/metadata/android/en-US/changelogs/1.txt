@@ -1,0 +1,9 @@
+First release.
+
+- Live camera zoom with a large slider, big +/− buttons, and pinch
+- Torch for dark or low-contrast reading
+- Freeze the image, then pan and zoom the still
+- Tap to focus
+- Large, high-contrast controls, full TalkBack support, haptic feedback
+- English and French
+- No network access, no ads, no analytics
