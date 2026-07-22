@@ -1,0 +1,20 @@
+{
+  "@@locale": "fr",
+  "appTitle": "FLOSS Magnifier",
+  "zoomIn": "Zoomer",
+  "zoomOut": "Dézoomer",
+  "zoomSliderLabel": "Niveau de zoom",
+  "zoomReset": "Réinitialiser le zoom à 1x",
+  "torchOn": "Lampe, allumée",
+  "torchOff": "Lampe, éteinte",
+  "freeze": "Figer l'image",
+  "resume": "Revenir à la vue en direct",
+  "imageFrozenAnnouncement": "Image figée. Déplacez-vous avec deux doigts.",
+  "imageLiveAnnouncement": "Vue en direct reprise.",
+  "permissionTitle": "Accès à la caméra requis",
+  "permissionBody": "FLOSS Magnifier utilise la caméra pour grossir ce que vous visez. Rien n'est enregistré. Si le bouton ne fait rien, activez la caméra pour cette application dans les réglages du téléphone.",
+  "permissionRetry": "Autoriser l'accès à la caméra",
+  "cameraErrorTitle": "La caméra n'a pas pu démarrer",
+  "cameraErrorRetry": "Réessayer",
+  "captureFailed": "Impossible de figer l'image"
+}
