@@ -10,6 +10,7 @@ import '../features/magnifier/components/camera_view.dart';
 import '../features/magnifier/components/control_bar.dart';
 import '../features/magnifier/components/frozen_view.dart';
 import '../features/magnifier/components/torch_button.dart';
+import '../features/magnifier/constants.dart';
 import '../features/magnifier/libs/magnifier_camera.dart';
 import '../features/magnifier/libs/open_app_settings.dart' as app_settings;
 import '../features/magnifier/libs/plugin_magnifier_camera.dart';
@@ -216,7 +217,7 @@ class _MagnifierScreenState extends State<MagnifierScreen>
                           style: TextButton.styleFrom(
                             backgroundColor: Colors.white.withValues(alpha: 0.9),
                             foregroundColor: Colors.black,
-                            minimumSize: const Size(64, 48),
+                            minimumSize: const Size(64, kMinControlSize),
                           ),
                           onPressed: state.resetZoom,
                           child: Text('${zoom.toStringAsFixed(1)}×',
