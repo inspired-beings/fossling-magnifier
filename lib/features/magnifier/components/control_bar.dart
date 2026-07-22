@@ -37,7 +37,11 @@ class ControlBar extends StatelessWidget {
                       onStep: state.zoomOut,
                       enabled: !state.isAtMinZoom,
                     ),
-                    FreezeButton(label: l10n.freeze, onPressed: onFreeze),
+                    FreezeButton(
+                      icon: Icons.center_focus_strong,
+                      label: l10n.freeze,
+                      onPressed: onFreeze,
+                    ),
                     ZoomStepperButton(
                       icon: Icons.add,
                       semanticLabel: l10n.zoomIn,

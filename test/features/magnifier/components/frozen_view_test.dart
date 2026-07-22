@@ -16,4 +16,20 @@ void main() {
     await tester.tap(find.bySemanticsLabel('Back to live view'));
     expect(resumed, isTrue);
   });
+
+  testWidgets('resume button icon differs from the freeze icon', (tester) async {
+    await pumpLocalized(
+        tester, FrozenView(image: MemoryImage(kTinyPng), onResume: () {}));
+    await tester.pump();
+    expect(find.byIcon(Icons.play_arrow), findsOneWidget);
+    expect(find.byIcon(Icons.center_focus_strong), findsNothing);
+  });
+
+  testWidgets('still is cover-cropped like the live preview', (tester) async {
+    await pumpLocalized(
+        tester, FrozenView(image: MemoryImage(kTinyPng), onResume: () {}));
+    await tester.pump();
+    final image = tester.widget<Image>(find.byType(Image));
+    expect(image.fit, BoxFit.cover);
+  });
 }

@@ -18,7 +18,9 @@ class FrozenView extends StatelessWidget {
           maxScale: 10,
           child: Image(
             image: image,
-            fit: BoxFit.contain,
+            // Match the live preview's cover crop — contain caused a
+            // letterbox jump on freeze.
+            fit: BoxFit.cover,
             errorBuilder: (context, _, _) => const ColoredBox(color: Colors.black),
           ),
         ),
@@ -28,6 +30,7 @@ class FrozenView extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(bottom: 16),
               child: FreezeButton(
+                icon: Icons.play_arrow,
                 label: AppLocalizations.of(context).resume,
                 onPressed: onResume,
               ),

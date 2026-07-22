@@ -4,8 +4,14 @@ import 'package:flutter/services.dart';
 import '../constants.dart';
 
 class FreezeButton extends StatelessWidget {
-  const FreezeButton({super.key, required this.label, required this.onPressed});
+  const FreezeButton({
+    super.key,
+    required this.icon,
+    required this.label,
+    required this.onPressed,
+  });
 
+  final IconData icon;
   final String label;
   final VoidCallback onPressed;
 
@@ -24,7 +30,7 @@ class FreezeButton extends StatelessWidget {
             HapticFeedback.heavyImpact();
             onPressed();
           },
-          child: const Icon(Icons.center_focus_strong, size: 32),
+          child: Icon(icon, size: 32),
         ),
       ),
     );
