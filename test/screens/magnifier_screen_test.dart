@@ -95,4 +95,71 @@ void main() {
     await tester.pump();
     expect(find.text('1.0×'), findsOneWidget);
   });
+
+  testWidgets('inactive keeps the camera alive', (tester) async {
+    final camera = FakeMagnifierCamera();
+    await pumpScreen(tester, camera);
+    addTearDown(() => tester.binding
+        .handleAppLifecycleStateChanged(AppLifecycleState.resumed));
+
+    tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.inactive);
+    await tester.pump();
+
+    expect(camera.log, isNot(contains('dispose')));
+    expect(find.bySemanticsLabel('Freeze image'), findsOneWidget);
+  });
+
+  testWidgets('paused releases camera, turns torch off and shows spinner',
+      (tester) async {
+    final camera = FakeMagnifierCamera();
+    await pumpScreen(tester, camera);
+    addTearDown(() => tester.binding
+        .handleAppLifecycleStateChanged(AppLifecycleState.resumed));
+
+    await tester.tap(find.bySemanticsLabel('Torch, off'));
+    await tester.pump();
+    expect(find.bySemanticsLabel('Torch, on'), findsOneWidget);
+
+    tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.paused);
+    await tester.pump();
+
+    expect(camera.log, contains('dispose'));
+    expect(find.byType(CircularProgressIndicator), findsOneWidget);
+  });
+
+  testWidgets('resume after pause re-initializes and restores live controls',
+      (tester) async {
+    final camera = FakeMagnifierCamera();
+    await pumpScreen(tester, camera);
+    addTearDown(() => tester.binding
+        .handleAppLifecycleStateChanged(AppLifecycleState.resumed));
+
+    tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.paused);
+    await tester.pump();
+
+    tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed);
+    await tester.pumpAndSettle();
+
+    expect(camera.log.where((entry) => entry == 'initialize').length, 2);
+    expect(find.bySemanticsLabel('Freeze image'), findsOneWidget);
+  });
+
+  testWidgets('frozen still survives pause and resume', (tester) async {
+    final camera = FakeMagnifierCamera();
+    await pumpScreen(tester, camera);
+    addTearDown(() => tester.binding
+        .handleAppLifecycleStateChanged(AppLifecycleState.resumed));
+
+    await tester.tap(find.bySemanticsLabel('Freeze image'));
+    await tester.pump();
+    expect(find.bySemanticsLabel('Back to live view'), findsOneWidget);
+
+    tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.paused);
+    await tester.pump();
+    expect(find.bySemanticsLabel('Back to live view'), findsOneWidget);
+
+    tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed);
+    await tester.pumpAndSettle();
+    expect(find.bySemanticsLabel('Back to live view'), findsOneWidget);
+  });
 }

@@ -48,9 +48,11 @@ class _MagnifierScreenState extends State<MagnifierScreen>
   }
 
   Future<void> _initCamera() async {
+    if (!mounted) return;
     setState(() => _status = _Initializing());
     try {
       await _camera.initialize();
+      if (!mounted) return;
       final previous = _state;
       final state = MagnifierState(minZoom: _camera.minZoom, maxZoom: _camera.maxZoom);
       // Survive a lifecycle re-init without losing a frozen still.
@@ -64,8 +66,10 @@ class _MagnifierScreenState extends State<MagnifierScreen>
         _status = _Ready();
       });
     } on CameraPermissionDeniedException {
+      if (!mounted) return;
       setState(() => _status = _PermissionDenied());
     } catch (_) {
+      if (!mounted) return;
       setState(() => _status = _Failed());
     }
   }
@@ -78,10 +82,13 @@ class _MagnifierScreenState extends State<MagnifierScreen>
   @override
   void didChangeAppLifecycleState(AppLifecycleState lifecycleState) {
     final state = _state;
-    if (lifecycleState == AppLifecycleState.inactive ||
-        lifecycleState == AppLifecycleState.paused) {
+    if (lifecycleState == AppLifecycleState.paused) {
       state?.isTorchOn.value = false;
       _camera.dispose();
+      // Never leave the live preview pointing at a disposed camera.
+      if (_status is _Ready && state != null && state.mode.value is LiveMode && mounted) {
+        setState(() => _status = _Initializing());
+      }
     } else if (lifecycleState == AppLifecycleState.resumed && state != null) {
       _initCamera();
     }
