@@ -6,6 +6,9 @@ name: DCO
 on:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   check_dco:
     name: DCO Check
