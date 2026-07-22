@@ -11,14 +11,16 @@ import '../features/magnifier/components/control_bar.dart';
 import '../features/magnifier/components/frozen_view.dart';
 import '../features/magnifier/components/torch_button.dart';
 import '../features/magnifier/libs/magnifier_camera.dart';
+import '../features/magnifier/libs/open_app_settings.dart' as app_settings;
 import '../features/magnifier/libs/plugin_magnifier_camera.dart';
 import '../features/magnifier/magnifier_state.dart';
 import '../features/magnifier/types.dart';
 
 class MagnifierScreen extends StatefulWidget {
-  const MagnifierScreen({super.key, this.createCamera});
+  const MagnifierScreen({super.key, this.createCamera, this.openAppSettings});
 
   final MagnifierCamera Function()? createCamera;
+  final Future<void> Function()? openAppSettings;
 
   @override
   State<MagnifierScreen> createState() => _MagnifierScreenState();
@@ -31,6 +33,8 @@ class _Initializing extends _ScreenStatus {}
 class _Ready extends _ScreenStatus {}
 
 class _PermissionDenied extends _ScreenStatus {}
+
+class _PermissionPermanentlyDenied extends _ScreenStatus {}
 
 class _Failed extends _ScreenStatus {}
 
@@ -67,9 +71,10 @@ class _MagnifierScreenState extends State<MagnifierScreen>
         _state = state;
         _status = _Ready();
       });
-    } on CameraPermissionDeniedException {
+    } on CameraPermissionDeniedException catch (e) {
       if (!mounted) return;
-      setState(() => _status = _PermissionDenied());
+      setState(() => _status =
+          e.isPermanent ? _PermissionPermanentlyDenied() : _PermissionDenied());
     } catch (_) {
       if (!mounted) return;
       setState(() => _status = _Failed());
@@ -92,9 +97,9 @@ class _MagnifierScreenState extends State<MagnifierScreen>
       if (_status is _Ready && state != null && state.mode.value is LiveMode && mounted) {
         setState(() => _status = _Initializing());
       }
-    } else if (lifecycleState == AppLifecycleState.resumed &&
-        state != null &&
-        _releasedByLifecycle) {
+    } else if (lifecycleState == AppLifecycleState.resumed && _releasedByLifecycle) {
+      // state == null covers the error screens: the user may have just granted
+      // the permission in phone settings, so always retry on return.
       _releasedByLifecycle = false;
       _initCamera();
     }
@@ -150,6 +155,15 @@ class _MagnifierScreenState extends State<MagnifierScreen>
             body: l10n.permissionBody,
             buttonLabel: l10n.permissionRetry,
             onRetry: _retry,
+          ),
+        _PermissionPermanentlyDenied() => CameraErrorView(
+            title: l10n.permissionTitle,
+            body: l10n.permissionPermanentBody,
+            buttonLabel: l10n.permissionOpenSettings,
+            onRetry: () {
+              unawaited(
+                  (widget.openAppSettings ?? app_settings.openAppSettings)());
+            },
           ),
         _Failed() => CameraErrorView(
             title: l10n.cameraErrorTitle,

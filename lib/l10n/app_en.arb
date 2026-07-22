@@ -14,6 +14,8 @@
   "permissionTitle": "Camera access needed",
   "permissionBody": "FLOSS Magnifier uses the camera to magnify what you point it at. Nothing is recorded or saved. If the button does nothing, enable Camera for this app in your phone settings.",
   "permissionRetry": "Allow camera access",
+  "permissionPermanentBody": "Camera access is turned off for FLOSS Magnifier. Open the phone settings and allow Camera to use the magnifier. Nothing is recorded or saved.",
+  "permissionOpenSettings": "Open settings",
   "cameraErrorTitle": "The camera could not be started",
   "cameraErrorRetry": "Try again",
   "captureFailed": "Could not freeze the image"

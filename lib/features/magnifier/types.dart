@@ -18,7 +18,10 @@ class FrozenMode extends MagnifierMode {
 }
 
 class CameraPermissionDeniedException implements Exception {
-  const CameraPermissionDeniedException();
+  const CameraPermissionDeniedException({this.isPermanent = false});
+
+  /// True when the OS will no longer show the permission prompt.
+  final bool isPermanent;
 }
 
 class CameraUnavailableException implements Exception {

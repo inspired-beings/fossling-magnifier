@@ -8,11 +8,18 @@ import 'package:floss_magnifier/screens/magnifier_screen.dart';
 
 import '../helpers/fake_magnifier_camera.dart';
 
-Future<void> pumpScreen(WidgetTester tester, FakeMagnifierCamera camera) async {
+Future<void> pumpScreen(
+  WidgetTester tester,
+  FakeMagnifierCamera camera, {
+  Future<void> Function()? openAppSettings,
+}) async {
   await tester.pumpWidget(MaterialApp(
     localizationsDelegates: AppLocalizations.localizationsDelegates,
     supportedLocales: AppLocalizations.supportedLocales,
-    home: MagnifierScreen(createCamera: () => camera),
+    home: MagnifierScreen(
+      createCamera: () => camera,
+      openAppSettings: openAppSettings,
+    ),
   ));
   await tester.pumpAndSettle();
 }
@@ -33,6 +40,36 @@ void main() {
     expect(find.text('Camera access needed'), findsOneWidget);
     await tester.tap(find.bySemanticsLabel('Allow camera access'));
     await tester.pumpAndSettle();
+    expect(find.byKey(const Key('fake-preview')), findsOneWidget);
+  });
+
+  testWidgets('permanently denied permission opens app settings', (tester) async {
+    final camera = FakeMagnifierCamera(
+        initError: const CameraPermissionDeniedException(isPermanent: true));
+    var opened = 0;
+    await pumpScreen(tester, camera, openAppSettings: () async => opened++);
+    expect(find.text('Camera access needed'), findsOneWidget);
+    expect(find.bySemanticsLabel('Allow camera access'), findsNothing);
+    await tester.tap(find.bySemanticsLabel('Open settings'));
+    await tester.pump();
+    expect(opened, 1);
+    expect(camera.log.where((entry) => entry == 'initialize').length, 1);
+  });
+
+  testWidgets('returning from settings retries initialization', (tester) async {
+    final camera = FakeMagnifierCamera(
+        initError: const CameraPermissionDeniedException(isPermanent: true));
+    await pumpScreen(tester, camera, openAppSettings: () async {});
+    addTearDown(() => tester.binding
+        .handleAppLifecycleStateChanged(AppLifecycleState.resumed));
+    expect(find.bySemanticsLabel('Open settings'), findsOneWidget);
+
+    tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.paused);
+    await tester.pump();
+    tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed);
+    await tester.pumpAndSettle();
+
+    expect(camera.log.where((entry) => entry == 'initialize').length, 2);
     expect(find.byKey(const Key('fake-preview')), findsOneWidget);
   });
 

@@ -51,8 +51,11 @@ class PluginMagnifierCamera implements MagnifierCamera {
         rethrow;
       }
     } on CameraException catch (e) {
-      if (e.code == 'CameraAccessDenied' || e.code == 'CameraAccessDeniedWithoutPrompt') {
+      if (e.code == 'CameraAccessDenied') {
         throw const CameraPermissionDeniedException();
+      }
+      if (e.code == 'CameraAccessDeniedWithoutPrompt') {
+        throw const CameraPermissionDeniedException(isPermanent: true);
       }
       throw CameraUnavailableException(e.code);
     }
