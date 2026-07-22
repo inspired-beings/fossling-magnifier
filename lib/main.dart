@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'app.dart';
+
 void main() {
-  runApp(const MaterialApp(home: SizedBox()));
+  runApp(const MagnifierApp());
 }

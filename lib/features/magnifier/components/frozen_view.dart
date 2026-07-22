@@ -16,7 +16,11 @@ class FrozenView extends StatelessWidget {
       children: [
         InteractiveViewer(
           maxScale: 10,
-          child: Image(image: image, fit: BoxFit.contain),
+          child: Image(
+            image: image,
+            fit: BoxFit.contain,
+            errorBuilder: (context, _, _) => const ColoredBox(color: Colors.black),
+          ),
         ),
         Align(
           alignment: Alignment.bottomCenter,
