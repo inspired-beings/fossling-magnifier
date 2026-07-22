@@ -22,6 +22,7 @@ void main() {
     await tester.pump();
     final slider = tester.widget<Slider>(find.byType(Slider));
     expect(slider.value, 8.0);
+    expect(find.bySemanticsLabel('Zoom level'), findsOneWidget);
   });
 
   testWidgets('freeze button fires callback and has semantic label', (tester) async {
@@ -39,6 +40,7 @@ void main() {
     expect(find.bySemanticsLabel("Figer l'image"), findsOneWidget);
     expect(find.bySemanticsLabel('Zoomer'), findsOneWidget);
     expect(find.bySemanticsLabel('Dézoomer'), findsOneWidget);
+    expect(find.bySemanticsLabel('Niveau de zoom'), findsOneWidget);
   });
 
   testWidgets('all tap targets are at least 48dp', (tester) async {

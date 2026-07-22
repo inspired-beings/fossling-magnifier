@@ -5,6 +5,9 @@ import 'package:flutter/services.dart';
 
 import '../constants.dart';
 
+/// `enabled: false` dims the button and switches to the edge (medium) haptic; the `onStep`
+/// callback still fires unconditionally — zoom clamping is `MagnifierState`'s job, not this
+/// widget's.
 class ZoomStepperButton extends StatefulWidget {
   const ZoomStepperButton({
     super.key,
