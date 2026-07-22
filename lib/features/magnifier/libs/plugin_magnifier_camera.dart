@@ -26,17 +26,23 @@ class PluginMagnifierCamera implements MagnifierCamera {
         orElse: () => cameras.isEmpty ? throw const CameraUnavailableException('no cameras') : cameras.first,
       );
       final controller = CameraController(back, ResolutionPreset.max, enableAudio: false);
-      await controller.initialize();
-      _minZoom = await controller.getMinZoomLevel();
-      _maxZoom = await controller.getMaxZoomLevel();
-      // The plugin has no torch-capability query; probing is the only way.
       try {
-        await controller.setFlashMode(FlashMode.off);
-        _hasTorch = true;
-      } on CameraException {
-        _hasTorch = false;
+        await controller.initialize();
+        _minZoom = await controller.getMinZoomLevel();
+        _maxZoom = await controller.getMaxZoomLevel();
+        // The plugin has no torch-capability query; probing is the only way.
+        try {
+          await controller.setFlashMode(FlashMode.off);
+          _hasTorch = true;
+        } on CameraException {
+          _hasTorch = false;
+        }
+        _controller = controller;
+      } catch (_) {
+        // Don't leak the native session when a post-init probe fails.
+        await controller.dispose();
+        rethrow;
       }
-      _controller = controller;
     } on CameraException catch (e) {
       if (e.code == 'CameraAccessDenied' || e.code == 'CameraAccessDeniedWithoutPrompt') {
         throw const CameraPermissionDeniedException();
