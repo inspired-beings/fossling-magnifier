@@ -38,6 +38,7 @@ class _MagnifierScreenState extends State<MagnifierScreen>
   late MagnifierCamera _camera;
   MagnifierState? _state;
   _ScreenStatus _status = _Initializing();
+  bool _releasedByLifecycle = false;
 
   @override
   void initState() {
@@ -85,11 +86,15 @@ class _MagnifierScreenState extends State<MagnifierScreen>
     if (lifecycleState == AppLifecycleState.paused) {
       state?.isTorchOn.value = false;
       _camera.dispose();
+      _releasedByLifecycle = true;
       // Never leave the live preview pointing at a disposed camera.
       if (_status is _Ready && state != null && state.mode.value is LiveMode && mounted) {
         setState(() => _status = _Initializing());
       }
-    } else if (lifecycleState == AppLifecycleState.resumed && state != null) {
+    } else if (lifecycleState == AppLifecycleState.resumed &&
+        state != null &&
+        _releasedByLifecycle) {
+      _releasedByLifecycle = false;
       _initCamera();
     }
   }

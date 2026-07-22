@@ -127,6 +127,21 @@ void main() {
     expect(find.byType(CircularProgressIndicator), findsOneWidget);
   });
 
+  testWidgets('inactive then resumed does not re-initialize the camera',
+      (tester) async {
+    final camera = FakeMagnifierCamera();
+    await pumpScreen(tester, camera);
+    addTearDown(() => tester.binding
+        .handleAppLifecycleStateChanged(AppLifecycleState.resumed));
+
+    tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.inactive);
+    await tester.pump();
+    tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed);
+    await tester.pumpAndSettle();
+
+    expect(camera.log.where((entry) => entry == 'initialize').length, 1);
+  });
+
   testWidgets('resume after pause re-initializes and restores live controls',
       (tester) async {
     final camera = FakeMagnifierCamera();

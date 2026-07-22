@@ -22,6 +22,10 @@ class PluginMagnifierCamera implements MagnifierCamera {
 
   @override
   Future<void> initialize() async {
+    // Defensive: never overwrite a live controller (also closes the
+    // pause-during-in-flight-init race).
+    await _controller?.dispose();
+    _controller = null;
     try {
       final cameras = await availableCameras();
       final back = cameras.firstWhere(
