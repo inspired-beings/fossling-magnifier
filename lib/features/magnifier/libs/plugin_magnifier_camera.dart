@@ -1,6 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/widgets.dart';
 
+import '../helpers/map_cover_crop_point.dart';
 import '../types.dart';
 import 'magnifier_camera.dart';
 
@@ -9,6 +10,8 @@ class PluginMagnifierCamera implements MagnifierCamera {
   double _minZoom = 1.0;
   double _maxZoom = 1.0;
   bool _hasTorch = false;
+  Size? _cropContainer;
+  Size? _cropContent;
 
   @override
   double get minZoom => _minZoom;
@@ -58,7 +61,35 @@ class PluginMagnifierCamera implements MagnifierCamera {
   }
 
   @override
-  Widget buildPreview(BuildContext context) => CameraPreview(_ready);
+  Widget buildPreview(BuildContext context) {
+    final controller = _ready;
+    return LayoutBuilder(builder: (context, constraints) {
+      final preview = controller.value.previewSize;
+      if (preview == null) return CameraPreview(controller);
+      final isPortrait = MediaQuery.orientationOf(context) == Orientation.portrait;
+      // previewSize is reported in landscape sensor coordinates; swap for portrait.
+      final displayed = isPortrait ? Size(preview.height, preview.width) : preview;
+      _updateCoverCrop(container: constraints.biggest, content: displayed);
+      return ClipRect(
+        child: FittedBox(
+          fit: BoxFit.cover,
+          clipBehavior: Clip.hardEdge,
+          child: SizedBox(
+            width: displayed.width,
+            height: displayed.height,
+            child: CameraPreview(controller),
+          ),
+        ),
+      );
+    });
+  }
+
+  // Runs during build (via LayoutBuilder) — must only assign fields, no
+  // setState/notifications.
+  void _updateCoverCrop({required Size container, required Size content}) {
+    _cropContainer = container;
+    _cropContent = content;
+  }
 
   @override
   Future<void> setZoom(double zoom) => _ready.setZoomLevel(zoom.clamp(_minZoom, _maxZoom));
@@ -69,8 +100,13 @@ class PluginMagnifierCamera implements MagnifierCamera {
 
   @override
   Future<void> setFocusPoint(Offset normalized) async {
-    await _ready.setFocusPoint(normalized);
-    await _ready.setExposurePoint(normalized);
+    final container = _cropContainer;
+    final content = _cropContent;
+    final mapped = (container != null && content != null)
+        ? mapCoverCropPoint(point: normalized, container: container, content: content)
+        : normalized;
+    await _ready.setFocusPoint(mapped);
+    await _ready.setExposurePoint(mapped);
   }
 
   @override
