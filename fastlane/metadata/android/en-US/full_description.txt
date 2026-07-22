@@ -1,0 +1,11 @@
+FLOSS Magnifier turns your phone into a comfortable magnifying glass, designed first for low-vision users.
+
+Features:
+- Live camera zoom with a large slider, big +/− buttons, and pinch
+- Torch for dark or low-contrast reading
+- Freeze the image, then pan and zoom the still — no more hand shake
+- Tap to focus
+- Large, high-contrast controls, full TalkBack support, haptic feedback
+- English and French
+
+Private by design: no network access, no ads, no analytics, nothing recorded or saved. Free software (AGPL-3.0), part of the Inspired Beings FLOSS collection.

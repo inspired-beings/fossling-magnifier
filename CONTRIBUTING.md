@@ -15,19 +15,35 @@
 
 ### Requirements
 
-- ...
+- [mise](https://mise.jdx.dev)
+- An Android phone with USB debugging enabled (no emulator needed)
 
 ### Install
 
-...
+```bash
+mise install
+eval "$(mise activate bash)"   # or your shell
+yes | sdkmanager --licenses
+sdkmanager "platform-tools" "platforms;android-36" "build-tools;28.0.3"
+flutter pub get
+```
+
+`flutter pub get` also generates the localization sources (`lib/l10n/generated/`, gitignored) via `generate: true` in `pubspec.yaml` — no separate step needed on a fresh clone. Run `flutter gen-l10n` directly only if you edit an `.arb` file under `lib/l10n/` and want the generated output refreshed without a full `pub get`.
 
 ### Run
 
-...
+```bash
+adb devices        # phone must show as 'device'
+flutter run
+```
 
 ### Test
 
-...
+```bash
+flutter analyze
+flutter test                                  # whole suite
+flutter test test/path/to/file_test.dart      # single file
+```
 
 ## Code of Conduct
 
