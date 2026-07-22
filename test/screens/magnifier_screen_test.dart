@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:floss_magnifier/features/magnifier/types.dart';
 import 'package:floss_magnifier/l10n/generated/app_localizations.dart';
@@ -113,6 +114,58 @@ void main() {
     await tester.tap(find.bySemanticsLabel('Back to live view'));
     await tester.pump();
     expect(find.bySemanticsLabel('Freeze image'), findsOneWidget);
+  });
+
+  // Captures TalkBack announcements from the accessibility platform channel,
+  // same technique as the haptics tests.
+  List<String> captureAnnouncements(WidgetTester tester) {
+    final announcements = <String>[];
+    tester.binding.defaultBinaryMessenger.setMockDecodedMessageHandler<dynamic>(
+        SystemChannels.accessibility, (message) async {
+      final envelope = message as Map<Object?, Object?>;
+      if (envelope['type'] == 'announce') {
+        final data = envelope['data'] as Map<Object?, Object?>;
+        announcements.add(data['message'] as String);
+      }
+    });
+    addTearDown(() => tester.binding.defaultBinaryMessenger
+        .setMockDecodedMessageHandler<dynamic>(SystemChannels.accessibility, null));
+    return announcements;
+  }
+
+  testWidgets('freeze sends the frozen TalkBack announcement', (tester) async {
+    final camera = FakeMagnifierCamera();
+    await pumpScreen(tester, camera);
+    final announcements = captureAnnouncements(tester);
+
+    await tester.tap(find.bySemanticsLabel('Freeze image'));
+    await tester.pump();
+
+    expect(announcements, ['Image frozen. Pan with two fingers.']);
+  });
+
+  testWidgets('resume sends the live TalkBack announcement', (tester) async {
+    final camera = FakeMagnifierCamera();
+    await pumpScreen(tester, camera);
+    await tester.tap(find.bySemanticsLabel('Freeze image'));
+    await tester.pump();
+    final announcements = captureAnnouncements(tester);
+
+    await tester.tap(find.bySemanticsLabel('Back to live view'));
+    await tester.pump();
+
+    expect(announcements, ['Live view resumed.']);
+  });
+
+  testWidgets('failed capture announces nothing', (tester) async {
+    final camera = FakeMagnifierCamera(takePictureError: Exception('nope'));
+    await pumpScreen(tester, camera);
+    final announcements = captureAnnouncements(tester);
+
+    await tester.tap(find.bySemanticsLabel('Freeze image'));
+    await tester.pump();
+
+    expect(announcements, isEmpty);
   });
 
   testWidgets('failed capture shows snackbar and stays live', (tester) async {
