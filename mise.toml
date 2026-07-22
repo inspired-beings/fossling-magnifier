@@ -1,0 +1,7 @@
+[tools]
+flutter = "3.44.7"
+java = "21.0.2"
+android-sdk = "22.0"
+
+[env]
+ANDROID_HOME = "/home/ivan/.local/share/mise/installs/android-sdk/22.0"
