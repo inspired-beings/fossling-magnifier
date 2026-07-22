@@ -7,6 +7,7 @@ class FakeMagnifierCamera implements MagnifierCamera {
     this.maxZoom = 8.0,
     this.hasTorch = true,
     this.initError,
+    this.setTorchError,
     this.takePictureError,
     this.stillPath,
   });
@@ -19,6 +20,7 @@ class FakeMagnifierCamera implements MagnifierCamera {
   final bool hasTorch;
 
   Object? initError;
+  Object? setTorchError;
   Object? takePictureError;
   final String? stillPath;
   final List<String> log = [];
@@ -41,7 +43,11 @@ class FakeMagnifierCamera implements MagnifierCamera {
   Future<void> setZoom(double zoom) async => log.add('setZoom $zoom');
 
   @override
-  Future<void> setTorch(bool on) async => log.add('setTorch $on');
+  Future<void> setTorch(bool on) async {
+    log.add('setTorch $on');
+    final error = setTorchError;
+    if (error != null) throw error;
+  }
 
   @override
   Future<void> setFocusPoint(Offset normalized) async =>

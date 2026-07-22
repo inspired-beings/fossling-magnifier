@@ -97,6 +97,16 @@ void main() {
     expect(find.bySemanticsLabel('Torch, on'), findsOneWidget);
   });
 
+  testWidgets('failed torch call reverts the torch state', (tester) async {
+    final camera = FakeMagnifierCamera(setTorchError: Exception('hw'));
+    await pumpScreen(tester, camera);
+    await tester.tap(find.bySemanticsLabel('Torch, off'));
+    await tester.pump();
+    expect(camera.log, contains('setTorch true'));
+    expect(find.bySemanticsLabel('Torch, off'), findsOneWidget);
+    expect(find.bySemanticsLabel('Torch, on'), findsNothing);
+  });
+
   testWidgets('no torch button when camera has no torch', (tester) async {
     final camera = FakeMagnifierCamera(hasTorch: false);
     await pumpScreen(tester, camera);

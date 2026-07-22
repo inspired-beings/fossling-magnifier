@@ -26,10 +26,18 @@ class TorchButton extends StatelessWidget {
             isSelected: on,
             icon: const Icon(Icons.flashlight_off),
             selectedIcon: const Icon(Icons.flashlight_on),
-            onPressed: () {
+            onPressed: () async {
               HapticFeedback.lightImpact();
               state.toggleTorch();
-              onChanged(state.isTorchOn.value);
+              final requested = state.isTorchOn.value;
+              try {
+                await onChanged(requested);
+              } catch (_) {
+                // Hardware refused: don't let the UI lie about the torch.
+                if (state.isTorchOn.value == requested) {
+                  state.isTorchOn.value = !requested;
+                }
+              }
             },
           ),
         ),
