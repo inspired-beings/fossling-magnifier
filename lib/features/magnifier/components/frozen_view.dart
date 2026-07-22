@@ -1,0 +1,36 @@
+import 'package:flutter/material.dart';
+import 'package:floss_magnifier/l10n/generated/app_localizations.dart';
+
+import 'freeze_button.dart';
+
+class FrozenView extends StatelessWidget {
+  const FrozenView({super.key, required this.image, required this.onResume});
+
+  final ImageProvider image;
+  final VoidCallback onResume;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        InteractiveViewer(
+          maxScale: 10,
+          child: Image(image: image, fit: BoxFit.contain),
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 16),
+              child: FreezeButton(
+                label: AppLocalizations.of(context).resume,
+                onPressed: onResume,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
