@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 
 import '../helpers/map_cover_crop_point.dart';
 import '../types.dart';
+import 'is_camera_permission_permanently_denied.dart';
 import 'magnifier_camera.dart';
 
 class PluginMagnifierCamera implements MagnifierCamera {
@@ -52,7 +53,10 @@ class PluginMagnifierCamera implements MagnifierCamera {
       }
     } on CameraException catch (e) {
       if (e.code == 'CameraAccessDenied') {
-        throw const CameraPermissionDeniedException();
+        // camera_android_camerax never emits CameraAccessDeniedWithoutPrompt;
+        // the platform side must be asked whether a prompt is still possible.
+        throw CameraPermissionDeniedException(
+            isPermanent: await isCameraPermissionPermanentlyDenied());
       }
       if (e.code == 'CameraAccessDeniedWithoutPrompt') {
         throw const CameraPermissionDeniedException(isPermanent: true);
