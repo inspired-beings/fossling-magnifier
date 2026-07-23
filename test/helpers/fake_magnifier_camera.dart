@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:floss_magnifier/features/magnifier/libs/magnifier_camera.dart';
+import 'package:fossling_magnifier/features/magnifier/libs/magnifier_camera.dart';
 
 class FakeMagnifierCamera implements MagnifierCamera {
   FakeMagnifierCamera({

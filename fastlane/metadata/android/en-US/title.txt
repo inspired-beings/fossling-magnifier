@@ -1,1 +1,1 @@
-FLOSS Magnifier
+Fossling Magnifier

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:floss_magnifier/l10n/generated/app_localizations.dart';
+import 'package:fossling_magnifier/l10n/generated/app_localizations.dart';
 
 Future<void> pumpLocalized(
   WidgetTester tester,

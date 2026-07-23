@@ -1,11 +1,11 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:floss_magnifier/features/magnifier/libs/is_camera_permission_permanently_denied.dart';
+import 'package:fossling_magnifier/features/magnifier/libs/is_camera_permission_permanently_denied.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  const channel = MethodChannel('com.inspiredbeings.flossmagnifier/settings');
+  const channel = MethodChannel('com.fossling.magnifier/settings');
 
   void mockResponse(Future<Object?> Function(MethodCall call) handler) {
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger

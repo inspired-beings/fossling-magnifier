@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:floss_magnifier/features/magnifier/magnifier_state.dart';
-import 'package:floss_magnifier/features/magnifier/types.dart';
+import 'package:fossling_magnifier/features/magnifier/magnifier_state.dart';
+import 'package:fossling_magnifier/features/magnifier/types.dart';
 
 void main() {
   MagnifierState makeState() => MagnifierState(minZoom: 1.0, maxZoom: 8.0);

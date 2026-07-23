@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:floss_magnifier/features/magnifier/components/control_bar.dart';
-import 'package:floss_magnifier/features/magnifier/magnifier_state.dart';
+import 'package:fossling_magnifier/features/magnifier/components/control_bar.dart';
+import 'package:fossling_magnifier/features/magnifier/magnifier_state.dart';
 
 import '../../../helpers/pump_localized.dart';
 

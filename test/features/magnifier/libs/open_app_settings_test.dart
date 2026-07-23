@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:floss_magnifier/features/magnifier/libs/open_app_settings.dart';
+import 'package:fossling_magnifier/features/magnifier/libs/open_app_settings.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -9,7 +9,7 @@ void main() {
     final calls = <MethodCall>[];
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
         .setMockMethodCallHandler(
-      const MethodChannel('com.inspiredbeings.flossmagnifier/settings'),
+      const MethodChannel('com.fossling.magnifier/settings'),
       (call) async {
         calls.add(call);
         return null;

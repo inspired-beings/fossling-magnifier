@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:floss_magnifier/features/magnifier/types.dart';
+import 'package:fossling_magnifier/features/magnifier/types.dart';
 
 import '../../helpers/fake_magnifier_camera.dart';
 

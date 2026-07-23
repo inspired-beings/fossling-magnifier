@@ -2,7 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:floss_magnifier/features/magnifier/components/zoom_stepper_button.dart';
+import 'package:fossling_magnifier/features/magnifier/components/zoom_stepper_button.dart';
 
 import '../../../helpers/pump_localized.dart';
 

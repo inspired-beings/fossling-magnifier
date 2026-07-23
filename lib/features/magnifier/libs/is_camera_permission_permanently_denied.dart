@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 
-const _channel = MethodChannel('com.inspiredbeings.flossmagnifier/settings');
+const _channel = MethodChannel('com.fossling.magnifier/settings');
 
 /// Only meaningful right after a denied permission request; defaults to false
 /// when the platform cannot answer.

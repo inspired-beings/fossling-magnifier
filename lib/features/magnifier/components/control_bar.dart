@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:floss_magnifier/l10n/generated/app_localizations.dart';
+import 'package:fossling_magnifier/l10n/generated/app_localizations.dart';
 
 import '../magnifier_state.dart';
 import 'freeze_button.dart';

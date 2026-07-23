@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:floss_magnifier/features/magnifier/components/camera_view.dart';
-import 'package:floss_magnifier/features/magnifier/magnifier_state.dart';
+import 'package:fossling_magnifier/features/magnifier/components/camera_view.dart';
+import 'package:fossling_magnifier/features/magnifier/magnifier_state.dart';
 
 import '../../../helpers/fake_magnifier_camera.dart';
 import '../../../helpers/pump_localized.dart';

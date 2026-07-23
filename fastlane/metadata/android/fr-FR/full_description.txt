@@ -1,4 +1,4 @@
-FLOSS Magnifier transforme votre téléphone en une loupe confortable, conçue d'abord pour les personnes malvoyantes.
+Fossling Loupe transforme votre téléphone en une loupe confortable, conçue d'abord pour les personnes malvoyantes.
 
 Fonctionnalités :
 - Zoom caméra en direct avec grand curseur, gros boutons +/− et pincement
@@ -8,4 +8,4 @@ Fonctionnalités :
 - Grandes commandes très contrastées, prise en charge complète de TalkBack, retour haptique
 - Français et anglais
 
-Respectueux par conception : aucun accès réseau, aucune publicité, aucune mesure d'audience, rien n'est enregistré. Logiciel libre (AGPL-3.0), membre de la collection FLOSS d'Inspired Beings.
+Respectueux par conception : aucun accès réseau, aucune publicité, aucune mesure d'audience, rien n'est enregistré. Logiciel libre (AGPL-3.0), membre de Fossling, la collection d'applications libres d'Inspired Beings.

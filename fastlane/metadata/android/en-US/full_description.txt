@@ -1,4 +1,4 @@
-FLOSS Magnifier turns your phone into a comfortable magnifying glass, designed first for low-vision users.
+Fossling Magnifier turns your phone into a comfortable magnifying glass, designed first for low-vision users.
 
 Features:
 - Live camera zoom with a large slider, big +/− buttons, and pinch
@@ -8,4 +8,4 @@ Features:
 - Large, high-contrast controls, full TalkBack support, haptic feedback
 - English and French
 
-Private by design: no network access, no ads, no analytics, nothing recorded or saved. Free software (AGPL-3.0), part of the Inspired Beings FLOSS collection.
+Private by design: no network access, no ads, no analytics, nothing recorded or saved. Free software (AGPL-3.0), part of Fossling, the Inspired Beings collection of free apps.

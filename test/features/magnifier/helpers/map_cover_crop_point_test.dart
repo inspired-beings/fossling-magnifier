@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:floss_magnifier/features/magnifier/helpers/map_cover_crop_point.dart';
+import 'package:fossling_magnifier/features/magnifier/helpers/map_cover_crop_point.dart';
 
 void main() {
   group('mapCoverCropPoint', () {

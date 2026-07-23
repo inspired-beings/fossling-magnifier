@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:floss_magnifier/features/magnifier/components/frozen_view.dart';
+import 'package:fossling_magnifier/features/magnifier/components/frozen_view.dart';
 
 import '../../../helpers/pump_localized.dart';
 import '../../../helpers/tiny_png.dart';

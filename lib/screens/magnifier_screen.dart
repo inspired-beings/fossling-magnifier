@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
-import 'package:floss_magnifier/l10n/generated/app_localizations.dart';
+import 'package:fossling_magnifier/l10n/generated/app_localizations.dart';
 
 import '../features/magnifier/components/camera_error_view.dart';
 import '../features/magnifier/components/camera_view.dart';

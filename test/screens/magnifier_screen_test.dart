@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:floss_magnifier/features/magnifier/types.dart';
-import 'package:floss_magnifier/l10n/generated/app_localizations.dart';
-import 'package:floss_magnifier/screens/magnifier_screen.dart';
+import 'package:fossling_magnifier/features/magnifier/types.dart';
+import 'package:fossling_magnifier/l10n/generated/app_localizations.dart';
+import 'package:fossling_magnifier/screens/magnifier_screen.dart';
 
 import '../helpers/fake_magnifier_camera.dart';
 
@@ -283,7 +283,7 @@ void main() {
   testWidgets('resume deletes the outgoing frozen still', (tester) async {
     await tester.runAsync(() async {
       final file = File(
-          '${Directory.systemTemp.path}/floss_magnifier_test_still_${DateTime.now().microsecondsSinceEpoch}.jpg');
+          '${Directory.systemTemp.path}/fossling_magnifier_test_still_${DateTime.now().microsecondsSinceEpoch}.jpg');
       await file.writeAsBytes([0]);
       final camera = FakeMagnifierCamera(stillPath: file.path);
       await pumpScreen(tester, camera);

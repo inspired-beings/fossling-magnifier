@@ -1,8 +1,8 @@
-# FLOSS Magnifier
+# Fossling Magnifier
 
 A simple, accessible magnifying glass app using your phone camera — designed first for low-vision users. Free, libre, adless.
 
-Part of the [Inspired Beings FLOSS collection](https://github.com/inspiredbeings).
+Part of [Fossling](https://github.com/inspired-beings), the Inspired Beings collection of free/libre apps.
 
 ## Features
 

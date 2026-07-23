@@ -1,4 +1,4 @@
-package com.inspiredbeings.flossmagnifier
+package com.fossling.magnifier
 
 import android.Manifest
 import android.content.Intent
@@ -22,7 +22,7 @@ class MainActivity : FlutterActivity() {
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
-        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "com.inspiredbeings.flossmagnifier/settings")
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "com.fossling.magnifier/settings")
             .setMethodCallHandler { call, result ->
                 when (call.method) {
                     // Only meaningful right after a denied request: rationale=false
