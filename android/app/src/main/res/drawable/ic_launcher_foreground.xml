@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Maps the SVG's 48-unit canvas (design-mask circle r=24) onto the 66dp safe zone. -->
+    <group
+        android:scaleX="1.375"
+        android:scaleY="1.375"
+        android:translateX="21"
+        android:translateY="21">
+        <path
+            android:pathData="M 8.5,19 a 10.5,10.5 0 1 1 21,0 a 10.5,10.5 0 1 1 -21,0"
+            android:strokeColor="#FFFFFF"
+            android:strokeWidth="3" />
+        <path
+            android:pathData="M 27.121,25 L 38.435,36.313 L 36.313,38.435 L 25,27.121 Z"
+            android:fillColor="#FFFFFF" />
+    </group>
+</vector>

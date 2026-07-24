@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="48"
+   height="48"
+   viewBox="0 0 48 48"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <title
+     id="title2">Fossling Magnifier Icon</title>
+  <defs
+     id="defs1" />
+  <g
+     id="layer1">
+    <rect
+       style="display:inline;fill:#0c1a4b;fill-opacity:1;stroke:none;stroke-linecap:round;stroke-miterlimit:2"
+       id="rect1"
+       width="48"
+       height="48"
+       x="0"
+       y="0" />
+    <circle
+       style="display:none;mix-blend-mode:normal;fill:#0c1a4b;fill-opacity:1;stroke:none;stroke-linecap:round;stroke-miterlimit:2"
+       id="path1"
+       cx="24"
+       cy="24"
+       r="24" />
+  </g>
+  <g
+     id="layer3">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.4495;stroke-linecap:round;stroke-miterlimit:2;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2"
+       width="3"
+       height="16"
+       x="-1.5"
+       y="-52.855339"
+       transform="rotate(135)" />
+    <circle
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:3;stroke-linecap:round;stroke-miterlimit:2;stroke-dasharray:none;stroke-opacity:1"
+       id="path2"
+       cx="19.000004"
+       cy="19.000002"
+       r="10.5" />
+  </g>
+  <metadata
+     id="metadata2">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>Inspired Beings EURL</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:date>2026-07-24</dc:date>
+        <dc:title>Fossling Magnifier Icon</dc:title>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>© Inspired Beings EURL. Licensed under CC BY-SA 4.0.</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Ivan Gabriele</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/" />
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-sa/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>
