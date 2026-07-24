@@ -1,11 +1,25 @@
-Fossling Loupe transforme votre téléphone en une loupe confortable, conçue d'abord pour les personnes malvoyantes.
+Voir clair, sans rien partager. Fossling Loupe transforme votre téléphone en une loupe confortable — conçue d'abord pour les personnes malvoyantes, pratique pour tout le monde.
 
-Fonctionnalités :
-- Zoom caméra en direct avec grand curseur, gros boutons +/− et pincement
-- Lampe torche pour la lecture dans l'obscurité
-- Figez l'image, puis déplacez et zoomez dans l'image fixe — fini les tremblements
-- Touchez pour faire la mise au point
-- Grandes commandes très contrastées, prise en charge complète de TalkBack, retour haptique
-- Français et anglais
+🔍 UN ZOOM FAIT POUR VOUS
+Un grand curseur, de gros boutons +/− et le pincement — des commandes que l'on voit et que l'on atteint vraiment. Touchez l'écran pour faire la mise au point.
 
-Respectueux par conception : aucun accès réseau, aucune publicité, aucune mesure d'audience, rien n'est enregistré. Logiciel libre (AGPL-3.0), membre de Fossling, la collection d'applications libres d'Inspired Beings.
+💡 ÉCLAIREZ LES PETITS CARACTÈRES
+Allumez la torche pour les menus des restaurants sombres, les étiquettes au fond des placards et les impressions peu contrastées.
+
+🧊 FIGEZ LES TREMBLEMENTS
+Capturez une image fixe, puis déplacez-vous et zoomez dedans en toute stabilité. Fini le texte qui danse sous la main.
+
+♿ L'ACCESSIBILITÉ D'ABORD, TOUJOURS
+De grandes commandes très contrastées, la prise en charge complète de TalkBack, un retour haptique et le respect de votre taille de police système.
+
+🔒 PRIVÉE PAR CONCEPTION
+Aucun accès réseau, aucune publicité, aucune mesure d'audience. Rien n'est enregistré ni sauvegardé — l'image de la caméra ne quitte jamais votre écran.
+
+🌍 DANS VOTRE LANGUE
+Disponible en français et en anglais.
+
+Fossling Loupe est un logiciel libre (AGPL-3.0), membre de Fossling — la collection d'applications libres et sans publicité d'Inspired Beings.
+
+Plus d'applications Fossling : https://github.com/inspired-beings
+Site web : https://www.inspired-beings.com
+Code source : https://github.com/inspired-beings/fossling-magnifier

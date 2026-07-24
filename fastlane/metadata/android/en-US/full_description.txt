@@ -1,11 +1,25 @@
-Fossling Magnifier turns your phone into a comfortable magnifying glass, designed first for low-vision users.
+See clearly, share nothing. Fossling Magnifier turns your phone into a comfortable magnifying glass — designed first for low-vision users, handy for everyone.
 
-Features:
-- Live camera zoom with a large slider, big +/− buttons, and pinch
-- Torch for dark or low-contrast reading
-- Freeze the image, then pan and zoom the still — no more hand shake
-- Tap to focus
-- Large, high-contrast controls, full TalkBack support, haptic feedback
-- English and French
+🔍 ZOOM THAT WORKS FOR YOU
+A large slider, big +/− buttons, and pinch to zoom — controls you can actually see and hit. Tap to focus.
 
-Private by design: no network access, no ads, no analytics, nothing recorded or saved. Free software (AGPL-3.0), part of Fossling, the Inspired Beings collection of free apps.
+💡 LIGHT UP THE SMALL PRINT
+Flip on the torch for menus in dim restaurants, labels in cupboards, and low-contrast print.
+
+🧊 FREEZE THE SHAKE
+Capture a still, then pan and zoom it steadily. No more chasing text with a trembling hand.
+
+♿ ACCESSIBILITY FIRST, ALWAYS
+Large high-contrast controls, full TalkBack support, haptic feedback, and your system font size honored.
+
+🔒 PRIVATE BY DESIGN
+No network access, no ads, no analytics. Nothing is recorded or saved — the camera feed never leaves your screen.
+
+🌍 IN YOUR LANGUAGE
+Available in English and French.
+
+Fossling Magnifier is free software (AGPL-3.0), part of Fossling — the Inspired Beings collection of free/libre, adless apps.
+
+More Fossling apps: https://github.com/inspired-beings
+Website: https://www.inspired-beings.com
+Source code: https://github.com/inspired-beings/fossling-magnifier
