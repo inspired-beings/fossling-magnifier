@@ -34,7 +34,10 @@ jobs:
       - run: flutter gen-l10n
       - run: flutter test
       - run: flutter build apk --release
+      - run: flutter build appbundle --release
       - uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2.6.2
         with:
-          files: build/app/outputs/flutter-apk/app-release.apk
+          files: |
+            build/app/outputs/flutter-apk/app-release.apk
+            build/app/outputs/bundle/release/app-release.aab
           generate_release_notes: true
