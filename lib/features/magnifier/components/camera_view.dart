@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:fossling_magnifier/l10n/generated/app_localizations.dart';
 
 import '../libs/magnifier_camera.dart';
 import '../magnifier_state.dart';
@@ -48,33 +49,38 @@ class _CameraViewState extends State<CameraView> {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
-      builder: (context, constraints) => GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTapUp: (d) => _handleTap(d, constraints.biggest),
-        onScaleStart: (_) => _pinchStartZoom = widget.state.zoom.value,
-        onScaleUpdate: (d) {
-          if (d.pointerCount >= 2) widget.state.setZoom(_pinchStartZoom * d.scale);
-        },
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            widget.camera.buildPreview(context),
-            if (_ringPosition != null)
-              Positioned(
-                left: _ringPosition!.dx - 32,
-                top: _ringPosition!.dy - 32,
-                child: Container(
-                  key: const Key('focus-ring'),
-                  width: 64,
-                  height: 64,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                        color: Theme.of(context).colorScheme.primary, width: 3),
+      builder: (context, constraints) => Semantics(
+        // The whole preview is a tap target (tap to focus); without a label a screen
+        // reader announces an unnamed full-screen button.
+        label: AppLocalizations.of(context).cameraPreview,
+        child: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTapUp: (d) => _handleTap(d, constraints.biggest),
+          onScaleStart: (_) => _pinchStartZoom = widget.state.zoom.value,
+          onScaleUpdate: (d) {
+            if (d.pointerCount >= 2) widget.state.setZoom(_pinchStartZoom * d.scale);
+          },
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              widget.camera.buildPreview(context),
+              if (_ringPosition != null)
+                Positioned(
+                  left: _ringPosition!.dx - 32,
+                  top: _ringPosition!.dy - 32,
+                  child: Container(
+                    key: const Key('focus-ring'),
+                    width: 64,
+                    height: 64,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                          color: Theme.of(context).colorScheme.primary, width: 3),
+                    ),
                   ),
                 ),
-              ),
-          ],
+            ],
+          ),
         ),
       ),
     );

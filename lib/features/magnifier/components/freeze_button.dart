@@ -18,19 +18,23 @@ class FreezeButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = kPrimaryControlSize + 4;
-    return Semantics(
-      button: true,
-      label: label,
-      child: SizedBox(
-        width: size,
-        height: size,
-        child: FilledButton(
-          style: FilledButton.styleFrom(shape: const CircleBorder()),
-          onPressed: () {
-            HapticFeedback.heavyImpact();
-            onPressed();
-          },
-          child: Icon(icon, size: 32),
+    // MergeSemantics: the button's own node carries the tap action, this one the label —
+    // unmerged, a screen reader reads an unlabeled button.
+    return MergeSemantics(
+      child: Semantics(
+        button: true,
+        label: label,
+        child: SizedBox(
+          width: size,
+          height: size,
+          child: FilledButton(
+            style: FilledButton.styleFrom(shape: const CircleBorder()),
+            onPressed: () {
+              HapticFeedback.heavyImpact();
+              onPressed();
+            },
+            child: Icon(icon, size: 32),
+          ),
         ),
       ),
     );

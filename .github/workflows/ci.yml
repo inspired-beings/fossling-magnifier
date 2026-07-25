@@ -26,4 +26,38 @@ jobs:
       - run: flutter gen-l10n
       - run: flutter analyze
       - run: flutter test
-      - run: flutter build apk --debug
+
+  # Sustainable-design gates on the artifact users actually install. The release build
+  # also replaces the former debug build as the compile check.
+  release-apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
+        with:
+          channel: stable
+          flutter-version: "3.44.7"
+          cache: true
+      - run: flutter pub get
+      - run: flutter gen-l10n
+      # Unsigned fallback (debug signing config): signing keys are release-only.
+      - run: flutter build apk --release
+      - name: Check size budget, merged permissions and minSdk
+        run: ./tool/check_release_apk.sh
+
+  # Same gate the release runs, kept on every PR so a new alert surfaces here first.
+  security-alerts:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check open security alerts
+        env:
+          GH_TOKEN: ${{ secrets.SECURITY_ALERTS_TOKEN || secrets.GITHUB_TOKEN }}
+        run: ./tool/check_security_alerts.sh

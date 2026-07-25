@@ -1,6 +1,7 @@
 {
   "@@locale": "fr",
   "appTitle": "Fossling Loupe",
+  "cameraPreview": "Aperçu de la caméra, appuyez pour faire la mise au point",
   "zoomIn": "Zoomer",
   "zoomOut": "Dézoomer",
   "zoomSliderLabel": "Niveau de zoom",

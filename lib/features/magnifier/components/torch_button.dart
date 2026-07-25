@@ -16,29 +16,33 @@ class TorchButton extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     return ValueListenableBuilder<bool>(
       valueListenable: state.isTorchOn,
-      builder: (context, on, _) => Semantics(
-        button: true,
-        label: on ? l10n.torchOn : l10n.torchOff,
-        child: SizedBox(
-          width: kTorchButtonSize,
-          height: kTorchButtonSize,
-          child: IconButton.filledTonal(
-            isSelected: on,
-            icon: const Icon(Icons.flashlight_off),
-            selectedIcon: const Icon(Icons.flashlight_on),
-            onPressed: () async {
-              HapticFeedback.lightImpact();
-              state.toggleTorch();
-              final requested = state.isTorchOn.value;
-              try {
-                await onChanged(requested);
-              } catch (_) {
-                // Hardware refused: don't let the UI lie about the torch.
-                if (state.isTorchOn.value == requested) {
-                  state.isTorchOn.value = !requested;
+      // MergeSemantics: the button's own node carries the tap action, this one the label —
+      // unmerged, a screen reader reads an unlabeled button.
+      builder: (context, on, _) => MergeSemantics(
+        child: Semantics(
+          button: true,
+          label: on ? l10n.torchOn : l10n.torchOff,
+          child: SizedBox(
+            width: kTorchButtonSize,
+            height: kTorchButtonSize,
+            child: IconButton.filledTonal(
+              isSelected: on,
+              icon: const Icon(Icons.flashlight_off),
+              selectedIcon: const Icon(Icons.flashlight_on),
+              onPressed: () async {
+                HapticFeedback.lightImpact();
+                state.toggleTorch();
+                final requested = state.isTorchOn.value;
+                try {
+                  await onChanged(requested);
+                } catch (_) {
+                  // Hardware refused: don't let the UI lie about the torch.
+                  if (state.isTorchOn.value == requested) {
+                    state.isTorchOn.value = !requested;
+                  }
                 }
-              }
-            },
+              },
+            ),
           ),
         ),
       ),

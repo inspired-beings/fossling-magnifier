@@ -1,6 +1,7 @@
 {
   "@@locale": "en",
   "appTitle": "Fossling Magnifier",
+  "cameraPreview": "Camera preview, tap to focus",
   "zoomIn": "Zoom in",
   "zoomOut": "Zoom out",
   "zoomSliderLabel": "Zoom level",
