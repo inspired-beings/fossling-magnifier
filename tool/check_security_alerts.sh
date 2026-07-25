@@ -8,7 +8,7 @@
 # never skipped quietly.
 set -euo pipefail
 
-readonly REPOSITORY="${GITHUB_REPOSITORY:-inspired-beings/fossling-magnifier}"
+readonly REPOSITORY="${GITHUB_REPOSITORY:?GITHUB_REPOSITORY is not set}"
 readonly SURFACES=(code-scanning secret-scanning dependabot)
 
 failed=0
