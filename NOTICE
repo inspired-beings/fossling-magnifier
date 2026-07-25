@@ -1,0 +1,25 @@
+Fossling Magnifier
+Copyright (C) 2026 Ivan Gabriele / Inspired Beings
+
+This program is free software, licensed under the GNU Affero General Public
+License version 3 — see LICENSE.md for the full text. The notices below cover
+the parts of this repository that are NOT under that license.
+
+
+Visual identity
+---------------
+
+The visual identity of this application — the icon and feature-graphic masters
+(assets/icon.svg, assets/icon.inkscape.svg, assets/feature-graphic.svg), the
+launcher artwork derived from them (android/app/src/main/res/mipmap-*/ and
+android/app/src/main/res/drawable*/ic_launcher_foreground.xml) and the store
+images under fastlane/metadata/android/*/images/ — is
+Copyright (C) 2026 Ivan Gabriele / Inspired Beings and licensed under
+Creative Commons Attribution-ShareAlike 4.0 International
+(CC BY-SA 4.0, https://creativecommons.org/licenses/by-sa/4.0/).
+
+That copyright license grants no rights over the "Fossling" and "Inspired
+Beings" names and logos, nor over this application's name: CC BY-SA 4.0 does
+not license trademark rights (section 2(b)(2)), and a modified version must be
+redistributed under a different name with the brand assets removed or replaced
+— see TRADEMARK.md.
