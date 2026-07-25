@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fossling_magnifier/l10n/generated/app_localizations.dart';
 
+import 'libs/build_app_theme.dart';
 import 'screens/magnifier_screen.dart';
 
 class MagnifierApp extends StatelessWidget {
@@ -12,11 +13,7 @@ class MagnifierApp extends StatelessWidget {
       onGenerateTitle: (context) => AppLocalizations.of(context).appTitle,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        colorSchemeSeed: Colors.amber,
-        useMaterial3: true,
-      ),
+      theme: buildAppTheme(),
       home: const MagnifierScreen(),
     );
   }
