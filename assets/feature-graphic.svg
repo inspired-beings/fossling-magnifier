@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Text set in Karla (SIL OFL); rasterize with Karla available to fontconfig. -->
+<svg
+   width="1024"
+   height="500"
+   viewBox="0 0 1024 500"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <title
+     id="title1">Fossling Magnifier Feature Graphic</title>
+  <rect
+     id="background"
+     width="1024"
+     height="500"
+     x="0"
+     y="0"
+     fill="#0c1a4b" />
+  <g
+     id="glyph"
+     transform="translate(118,113) scale(6)">
+    <circle
+       id="lens"
+       cx="19.000004"
+       cy="19.000002"
+       r="10.5"
+       fill="none"
+       stroke="#ffffff"
+       stroke-width="3"
+       stroke-linecap="round"
+       stroke-miterlimit="2" />
+    <rect
+       id="handle"
+       width="3"
+       height="16"
+       x="-1.5"
+       y="-52.855339"
+       transform="rotate(135)"
+       fill="#ffffff" />
+  </g>
+  <text
+     id="wordmark-collection"
+     x="472"
+     y="232"
+     font-family="Karla"
+     font-weight="500"
+     font-size="92"
+     fill="#ffffff">Fossling</text>
+  <text
+     id="wordmark-function"
+     x="472"
+     y="342"
+     font-family="Karla"
+     font-weight="800"
+     font-size="92"
+     fill="#ffffff">Magnifier</text>
+  <metadata
+     id="metadata1">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>Inspired Beings EURL</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:date>2026-07-25</dc:date>
+        <dc:title>Fossling Magnifier Feature Graphic</dc:title>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>© Inspired Beings EURL. Licensed under CC BY-SA 4.0.</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Ivan Gabriele</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/" />
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-sa/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>
