@@ -46,3 +46,7 @@ app.*.map.json
 
 # Generated localization code
 lib/l10n/generated/
+
+# Local-only working files
+/AGENTS.md
+/CLAUDE.md
